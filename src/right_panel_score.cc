@@ -41,7 +41,6 @@ right_panel_score::right_panel_score ()
   gigablitz_countdown = gauge_height;
   delay_gigablitz_countdown = 0; 
   flip_white = false;
-  gauge_height = 0;
   panel_width = 0;
 }
 

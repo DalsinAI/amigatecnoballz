@@ -360,6 +360,48 @@ sprite_ball::accelerate ()
     }
 }
 
+/** Displacement of the balls sticked to the paddle
+ * */
+void
+sprite_ball::move_sticked_paddle (sprite_paddle * paddle)
+{
+  Sint32 j;
+  switch (sticky_paddle_num)
+    {
+    case controller_paddles::BOTTOM_PADDLE:
+      j = (paddle->collision_width >> 1) - ((collision_width >> 1) + 1);
+      j += paddle->get_x_coord ();
+      x_coord = j;
+      j = (paddle->get_y_coord ()) - (collision_height + 1);
+      y_coord = j;
+      break;
+
+    case controller_paddles::RIGHT_PADDLE:
+      j = (paddle->get_x_coord ()) - (collision_width - 1);
+      x_coord = j;
+      j = (paddle->collision_height >> 1) - ((collision_height >> 1) + 1);
+      j += paddle->get_y_coord ();
+      y_coord = j;
+      break;
+
+    case controller_paddles::TOP_PADDLE:
+      j = (paddle->collision_width >> 1) - ((collision_width >> 1) + 1);
+      j += paddle->get_x_coord ();
+      x_coord = j;
+      j = (paddle->get_y_coord ()) + paddle->collision_height + 1;
+      y_coord = j;
+      break;
+
+    case controller_paddles::LEFT_PADDLE:
+      j = (paddle->get_x_coord ()) + (paddle->collision_width) + 1;
+      x_coord = j;
+      j = (paddle->collision_height >> 1) - ((collision_height >> 1) + 1);
+      j += paddle->get_y_coord ();
+      y_coord = j;
+      break;
+    }
+}
+
 /**
 + * Check collision beetween a ball and another sprite.
 + * Override sprite_object::collision(sprite_object *).

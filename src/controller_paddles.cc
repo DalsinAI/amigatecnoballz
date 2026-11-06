@@ -57,8 +57,15 @@ controller_paddles::controller_paddles ()
       width_maxi = 32 * resolution;
       width_mini = 32 * resolution;
       bottom_y_coord = (232 - 8) * resolution;
-      min_coordinate = 16 * resolution;
-      max_coordinate = 300 * resolution;
+      min_coordinate = 16;
+      if (resolution == 1)
+        {
+          max_coordinate = 303; 
+        }
+      else 
+        {
+          max_coordinate = 622; 
+        }
     }
  else
     {

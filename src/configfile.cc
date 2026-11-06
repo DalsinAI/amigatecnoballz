@@ -96,7 +96,12 @@ configfile::resetvalue ()
   initial_num_of_lifes = 5;
   number_of_players = 1;
   char *user = getenv ("USER");
+#ifdef __amigaos__
+  /* AmigaOS has no $USER: the game's own name, not a NULL pointer */
+  if (user == NULL)
+#else
   if (user != NULL)
+#endif
     {
       user = stringname;
     }
@@ -167,6 +172,10 @@ configfile::get_fullpathname ()
     {
       return;
     }
+#ifdef __amigaos__
+  /* the drawer's user/ (made at the first save) */
+  conf_dirname = "PROGDIR:user";
+#else
   if (getenv ("XDG_CONFIG_HOME") != NULL)
     {
       conf_dirname = getenv ("XDG_CONFIG_HOME");
@@ -177,6 +186,7 @@ configfile::get_fullpathname ()
       conf_dirname = (getenv ("HOME") ? getenv ("HOME") : ".");
       conf_dirname += "/.config/" + CONF_DIR_NAME;
     }
+#endif
   conf_filename += conf_dirname + "/" + CONF_FILENAME;
 }
 
