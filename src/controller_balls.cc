@@ -232,6 +232,7 @@ controller_balls::check_outside_balls ()
       num_of_sprites = 1;
       ball->paddle_touched->stick_ball (ball);
       ball->starts_again (ball->paddle_touched);
+      ball->move_sticked_paddle (paddle);
       head_anim->start_interference ();
       current_player->remove_life (1);
       ships->force_explosion ();
@@ -409,49 +410,7 @@ controller_balls::move_balls ()
         }
 
       /* displacement of the balls sticked to the paddle */
-      switch (ball->sticky_paddle_num)
-        {
-        case controller_paddles::BOTTOM_PADDLE:
-          j = (paddle->collision_width >> 1) -
-              ((ball->collision_width >> 1) + 1);
-          j += paddle->x_coord;
-          ball->x_coord = j;
-          j = (paddle->y_coord) - (ball->collision_height + 1);
-          ball->y_coord = j;
-          break;
-
-        case controller_paddles::RIGHT_PADDLE:
-          j = (paddle->x_coord) - (ball->collision_width - 1);
-          ball->x_coord = j;
-          j =
-            (paddle->collision_height >> 1) -
-            ((ball->collision_height >> 1) + 1);
-          j += paddle->y_coord;
-          ball->y_coord = j;
-          break;
-
-        case controller_paddles::TOP_PADDLE:
-          j =
-            (paddle->collision_width >> 1) -
-            ((ball->collision_width >> 1) + 1);
-          j += paddle->x_coord;
-          ball->x_coord = j;
-          j = (paddle->y_coord) + paddle->collision_height + 1;
-          ball->y_coord = j;
-          break;
-
-        case controller_paddles::LEFT_PADDLE:
-          j = (paddle->x_coord) + (paddle->collision_width) + 1;
-          ball->x_coord = j;
-          j =
-            (paddle->collision_height >> 1) -
-            ((ball->collision_height >> 1) + 1);
-          j += paddle->y_coord;
-          ball->y_coord = j;
-          break;
-
-        }
-
+      ball->move_sticked_paddle (paddle);
 
       if (--ball->viewfinder_delay < 0)
         {

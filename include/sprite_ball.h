@@ -200,6 +200,7 @@ class sprite_ball:public sprite_object
     void set_on_ejector (Uint32 eject_id, Uint32 otime = 1);
     void disable_stick ();
     void accelerate ();
+    void move_sticked_paddle(sprite_paddle * paddle); 
     virtual bool collision (sprite_object * sprite);
 
   private:
