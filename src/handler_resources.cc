@@ -316,9 +316,13 @@ const char * handler_resources::folderlist[] =
 { 
   /* special value meaning "$(PREFIX)/share/games/tecnoballz/" */
   DATADIR,
+#ifndef __amigaos__
+  /* (on AmigaOS a leading "/" is the parent drawer: the data is in
+   * PROGDIR:data, DATADIR, only) */
   "/",
   /* normally unused, except when running from the source directory */
   "./TecnoballZ/",
+#endif
   /* also marks end of list */
   0
 };
@@ -353,7 +357,12 @@ handler_resources::locate_data_file (const char *const name)
 
   /* if absolute path, return a pointer to a duplicate string */
   char *pathname;
+#ifdef __amigaos__
+  /* and on AmigaOS a name with a volume or assign: PROGDIR:tecnoballz.hi */
+  if (*name == '/' || strchr (name, ':') != NULL)
+#else
   if (*name == '/')
+#endif
     {
       pathname = &pathstring[0];
       strcpy (pathname, name);
