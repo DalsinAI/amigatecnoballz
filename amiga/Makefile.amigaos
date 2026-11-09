@@ -87,6 +87,7 @@ dist: $(BUILD)/$(PROG) $(ICONS) AMIGA_PORT.md
 	find $(OUT)/data -name Makefile.am -delete
 	cp tecnoballz.hi $(OUT)/
 	cp AMIGA_PORT.md $(OUT)/ReadMe
+	cp amiga/Controls $(OUT)/Controls
 	cp COPYING $(OUT)/COPYING.txt
 	cp amiga/libmikmod/COPYING.LIB $(OUT)/COPYING-libmikmod.txt
 	cp amiga/icons/TecnoballZ.info amiga/icons/ReadMe.info $(OUT)/
