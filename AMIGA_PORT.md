@@ -79,4 +79,4 @@ Licences
 TecnoballZ, its pictures, levels, sounds and music: GPL 3 or later
 (COPYING.txt). libmikmod: LGPL 2 or later (COPYING-libmikmod.txt). TinyXML:
 zlib licence. The Amiga files (amiga/): GPL 3 or later, the AmiCradle
-Team; the icon is Debian's tecnoballz.xpm (GPL 3 or later).
+Team; the icons are our own GlowIcons (amiga/icons/art/tecnoballz.svg).
