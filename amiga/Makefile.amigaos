@@ -94,6 +94,7 @@ dist: $(BUILD)/$(PROG) $(ICONS) AMIGA_PORT.md
 	cp amiga/icons/ReadMe.info $(OUT)/COPYING.txt.info
 	cp amiga/icons/ReadMe.info $(OUT)/COPYING-libmikmod.txt.info
 	cp amiga/icons/TecnoballZ-drawer.info dist/TecnoballZ.info
+	cp package/Install-TecnoballZ package/Install-TecnoballZ.info dist/
 
 -include $(OBJS:.o=.d)
 
