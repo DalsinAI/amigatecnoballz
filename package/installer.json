@@ -1,0 +1,20 @@
+{
+  "name": "TecnoballZ",
+  "version": "0.93.1-amigaos3",
+  "drawer": "TecnoballZ",
+  "program": "TecnoballZ",
+  "cpu": "68040",
+  "fpu": true,
+  "space": 7000000,
+  "modules": [
+    "SDL2.module"
+  ],
+  "keep": [
+    "user",
+    "tecnoballz.hi",
+    "Screenshots"
+  ],
+  "parent": "Work:Games",
+  "badge": "../amiga/icons/art/tecnoballz.png",
+  "script": "Install-TecnoballZ"
+}
